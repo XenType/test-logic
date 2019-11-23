@@ -1,4 +1,4 @@
-import { TestClassMethodBundle, CalledFunctionBundle, CalledClassMethodBundle } from './types';
+import { CalledClassMethodBundle, CalledFunctionBundle, TestClassMethodBundle } from './types';
 
 export class TestClassMethodUsage {
     public static callsFunctionTimesAsync = async (classBundle: TestClassMethodBundle, calledBundle: CalledFunctionBundle): Promise<void> => {
@@ -19,7 +19,7 @@ export class TestClassMethodUsage {
         try {
             await classBundle.classToTest[classBundle.methodName](...classBundle.args);
         } catch {}
-        for (let argSet of calledBundle.expectedArgs || []) {
+        for (const argSet of calledBundle.expectedArgs || []) {
             expect(calledBundle.calledFunction).toHaveBeenCalledWith(...argSet);
         }
         return;
@@ -28,7 +28,7 @@ export class TestClassMethodUsage {
         try {
             classBundle.classToTest[classBundle.methodName](...classBundle.args);
         } catch {}
-        for (let argSet of calledBundle.expectedArgs || []) {
+        for (const argSet of calledBundle.expectedArgs || []) {
             expect(calledBundle.calledFunction).toHaveBeenCalledWith(...argSet);
         }
         return;
@@ -57,7 +57,7 @@ export class TestClassMethodUsage {
         try {
             await classBundle.classToTest[classBundle.methodName](...classBundle.args);
         } catch {}
-        for (let argSet of calledBundle.expectedArgs || []) {
+        for (const argSet of calledBundle.expectedArgs || []) {
             expect(methodSpy).toHaveBeenCalledWith(...argSet);
         }
         return;
@@ -67,7 +67,7 @@ export class TestClassMethodUsage {
         try {
             classBundle.classToTest[classBundle.methodName](...classBundle.args);
         } catch {}
-        for (let argSet of calledBundle.expectedArgs || []) {
+        for (const argSet of calledBundle.expectedArgs || []) {
             expect(methodSpy).toHaveBeenCalledWith(...argSet);
         }
         return;

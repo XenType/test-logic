@@ -1,6 +1,12 @@
-import { testErrorMessage, testArguments_ToEqual, expectedToEqualResult, testArguments_ToStrictEqual, expectedToStrictEqualResult } from './constants';
+import {
+    expectedToEqualResult,
+    expectedToStrictEqualResult,
+    testArguments_ToEqual,
+    testArguments_ToStrictEqual,
+    testErrorMessage,
+} from './constants';
 import { calledFunction } from './functions';
-import {} from './sim_module';
+
 export class TestClass {
     public static async testMethodAsync(a: number, b: string, c: boolean): Promise<any> {
         for (let i = 0; i < a; i++) {

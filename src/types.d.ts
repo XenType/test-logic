@@ -1,5 +1,8 @@
+export type TestSyncFunction = (...args: any[]) => any;
+export type TestAsyncFunction = (...args: any[]) => Promise<any>;
+export type TestFunction = TestSyncFunction | TestAsyncFunction;
 export type TestFunctionBundle = {
-    functionToTest: Function;
+    functionToTest: TestFunction;
     args: any[];
 };
 export type TestClassMethodBundle = {
@@ -8,7 +11,7 @@ export type TestClassMethodBundle = {
     args: any[];
 };
 export type CalledFunctionBundle = {
-    calledFunction: Function;
+    calledFunction: TestFunction;
     times?: number;
     expectedArgs?: any[][];
 };

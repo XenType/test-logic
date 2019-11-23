@@ -1,4 +1,5 @@
 // TestFunctionResult constants
+/* tslint:disable variable-name */
 export const testArguments_NoError = [1, 'test'];
 export const testArguments_WithError = [2, 'error'];
 export const testArguments_ToEqual = [3, 'value'];
@@ -18,5 +19,5 @@ export const expectedArguments_TooManyCalls = [
     [3, 'thrice', true],
     [3, 'thrice', true],
     [3, 'thrice', true],
-    [3, 'eeek', true]
+    [3, 'eeek', true],
 ];
