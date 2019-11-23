@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "declaration": false,
+        // "outDir": "./dist",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noLib": false,
+        "types": ["jest"]
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules", "dist", "**/*.spec.ts"]
+}
