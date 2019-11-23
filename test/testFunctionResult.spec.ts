@@ -44,14 +44,14 @@ jest.mock('./fixtures/functions', () => ({
 }));
 
 describe('When using TestFunctionResult helper class', () => {
-    const asyncNoErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_NoError);
-    const asyncErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_WithError);
-    const asyncToEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_ToEqual);
-    const asyncStrictEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_ToStrictEqual);
-    const noErrorBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_NoError);
-    const errorBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_WithError);
-    const toEqualBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_ToEqual);
-    const strictEqualBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_ToStrictEqual);
+    const asyncNoErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_NoError);
+    const asyncErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_WithError);
+    const asyncToEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_ToEqual);
+    const asyncStrictEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_ToStrictEqual);
+    const noErrorBundle = TestHelper.BundleTestFunction(testFunction, testArguments_NoError);
+    const errorBundle = TestHelper.BundleTestFunction(testFunction, testArguments_WithError);
+    const toEqualBundle = TestHelper.BundleTestFunction(testFunction, testArguments_ToEqual);
+    const strictEqualBundle = TestHelper.BundleTestFunction(testFunction, testArguments_ToStrictEqual);
     describe('and calling runsWithoutErrorAsync', () => {
         describe('it calls the test function', () => {
             test('one time', async () => {

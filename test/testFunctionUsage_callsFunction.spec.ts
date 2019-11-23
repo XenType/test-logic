@@ -29,13 +29,13 @@ jest.mock('./fixtures/functions', () => ({
 }));
 
 describe('When using TestFunctionUsage helper class', () => {
-    const asyncSingleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_SingleCall);
-    const asyncTripleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_TripleCall);
-    const singleCallBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_SingleCall);
-    const tripleCallBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_TripleCall);
-    const singleCalledBundle = TestHelper.BundleCalledFunction(calledFunction, /* */ testArguments_SingleCall[0] as number, /* */ expectedArguments_SingleCall);
-    const wrongValuesCalledBundle = TestHelper.BundleCalledFunction(calledFunction, /* */ testArguments_SingleCall[0] as number, /* */ expectedArguments_WrongValues);
-    const tooManyCalledBundle = TestHelper.BundleCalledFunction(calledFunction, /* */ testArguments_SingleCall[0] as number, /* */ expectedArguments_TooManyCalls);
+    const asyncSingleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_SingleCall);
+    const asyncTripleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_TripleCall);
+    const singleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_SingleCall);
+    const tripleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_TripleCall);
+    const singleCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_SingleCall);
+    const wrongValuesCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_WrongValues);
+    const tooManyCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_TooManyCalls);
     describe('and calling callsFunctionTimesAsync', () => {
         describe('it calls the test function', () => {
             test('one time', async () => {

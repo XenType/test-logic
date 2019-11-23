@@ -27,45 +27,45 @@ jest.mock('./fixtures/functions', () => ({
 }));
 
 describe('When using TestFunctionUsage helper class', () => {
-    const asyncSingleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_SingleCall);
-    const asyncTripleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, /* */ testArguments_TripleCall);
-    const singleCallBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_SingleCall);
-    const tripleCallBundle = TestHelper.BundleTestFunction(testFunction, /* */ testArguments_TripleCall);
+    const asyncSingleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_SingleCall);
+    const asyncTripleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_TripleCall);
+    const singleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_SingleCall);
+    const tripleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_TripleCall);
     const asyncSingleCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethodAsync',
+        'testFunctionAsMethodAsync',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_SingleCall
+        expectedArguments_SingleCall
     );
     const asyncWrongValuesCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethodAsync',
+        'testFunctionAsMethodAsync',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_WrongValues
+        expectedArguments_WrongValues
     );
     const asyncTooManyCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethodAsync',
+        'testFunctionAsMethodAsync',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_TooManyCalls
+        expectedArguments_TooManyCalls
     );
     const singleCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethod',
+        'testFunctionAsMethod',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_SingleCall
+        expectedArguments_SingleCall
     );
     const wrongValuesCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethod',
+        'testFunctionAsMethod',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_WrongValues
+        expectedArguments_WrongValues
     );
     const tooManyCalledBundle = TestHelper.BundleCalledClassMethod(
         TestModule,
-        /* */ 'testFunctionAsMethod',
+        'testFunctionAsMethod',
         testArguments_SingleCall[0] as number,
-        /* */ expectedArguments_TooManyCalls
+        expectedArguments_TooManyCalls
     );
     describe('and calling callsClassMethodTimesAsync', () => {
         describe('it calls the test function', () => {
