@@ -33,11 +33,11 @@ Include specific test helper classes.
 Example:
 
 ```javascript
-import { TestClassMethodResult } from 'test-logic/testClassMethodResult';
-import { TestClassMethodUsage } from 'test-logic/testClassMethodUsage';
-import { TestFunctionResult } from 'test-logic/testFunctionResult';
-import { TestFunctionUsage } from 'test-logic/testFunctionUsage';
-import { TestHelper } from 'test-logic/TestHelper';
+import { TestClassMethodResult } from 'test-logic/dist/testClassMethodResult';
+import { TestClassMethodUsage } from 'test-logic/dist/testClassMethodUsage';
+import { TestFunctionResult } from 'test-logic/dist/testFunctionResult';
+import { TestFunctionUsage } from 'test-logic/dist/testFunctionUsage';
+import { TestHelper } from 'test-logic/dist/TestHelper';
 ```
 
 ### Using the TestHelper class
