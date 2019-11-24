@@ -5,7 +5,7 @@ import {
     testArguments_SingleCall,
     testArguments_TripleCall,
     expectedArguments_TooManyCalls,
-    expectedArguments_WrongValues
+    expectedArguments_WrongValues,
 } from './fixtures/constants';
 import { TestHelper } from '../src/testHelper';
 jest.mock('./fixtures/functions', () => ({
@@ -15,7 +15,7 @@ jest.mock('./fixtures/functions', () => ({
                 calledFunction(a, b, true);
             }
             return;
-        }
+        },
     ),
     testFunction: jest.fn((a: number, b: string): any => {
         for (let i = 0; i < a; i++) {
@@ -25,17 +25,17 @@ jest.mock('./fixtures/functions', () => ({
     }),
     calledFunction: jest.fn((a: number, b: string, c: boolean): any => {
         return;
-    })
+    }),
 }));
 
 describe('When using TestFunctionUsage helper class', () => {
-    const asyncSingleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_SingleCall);
-    const asyncTripleCallBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_TripleCall);
-    const singleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_SingleCall);
-    const tripleCallBundle = TestHelper.BundleTestFunction(testFunction, testArguments_TripleCall);
-    const singleCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_SingleCall);
-    const wrongValuesCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_WrongValues);
-    const tooManyCalledBundle = TestHelper.BundleCalledFunction(calledFunction, testArguments_SingleCall[0] as number, expectedArguments_TooManyCalls);
+    const asyncSingleCallBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_SingleCall);
+    const asyncTripleCallBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_TripleCall);
+    const singleCallBundle = TestHelper.bundleTestFunction(testFunction, testArguments_SingleCall);
+    const tripleCallBundle = TestHelper.bundleTestFunction(testFunction, testArguments_TripleCall);
+    const singleCalledBundle = TestHelper.bundleCalledFunction(calledFunction, expectedArguments_SingleCall);
+    const wrongValuesCalledBundle = TestHelper.bundleCalledFunction(calledFunction, expectedArguments_WrongValues);
+    const tooManyCalledBundle = TestHelper.bundleCalledFunction(calledFunction, expectedArguments_TooManyCalls);
     describe('and calling callsFunctionTimesAsync', () => {
         describe('it calls the test function', () => {
             test('one time', async () => {

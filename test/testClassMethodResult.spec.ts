@@ -9,20 +9,20 @@ import {
     testArguments_ToStrictEqual,
     expectedToStrictEqualResult,
     expectedMustUseStrictEqualResult,
-    expectedNotToStrictEqualResult
+    expectedNotToStrictEqualResult,
 } from './fixtures/constants';
 import { expectEquality } from '../src/common';
 import { TestHelper } from '../src/testHelper';
 
 describe('When using TestClassMethodResult helper class', () => {
-    const asyncClassBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_NoError);
-    const asyncErrorClassBundle = TestHelper.BundleTestClassMethod(ErrorTestClass, 'testMethodAsync', testArguments_NoError);
-    const asyncToEqualClassBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_ToEqual);
-    const asyncToStrictEqualClassBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_ToStrictEqual);
-    const classBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethod', testArguments_NoError);
-    const errorClassBundle = TestHelper.BundleTestClassMethod(ErrorTestClass, 'testMethod', testArguments_NoError);
-    const toEqualClassBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethod', testArguments_ToEqual);
-    const toStrictEqualClassBundle = TestHelper.BundleTestClassMethod(TestClass, 'testMethod', testArguments_ToStrictEqual);
+    const asyncClassBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_NoError);
+    const asyncErrorClassBundle = TestHelper.bundleTestClassMethod(ErrorTestClass, 'testMethodAsync', testArguments_NoError);
+    const asyncToEqualClassBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_ToEqual);
+    const asyncToStrictEqualClassBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethodAsync', testArguments_ToStrictEqual);
+    const classBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethod', testArguments_NoError);
+    const errorClassBundle = TestHelper.bundleTestClassMethod(ErrorTestClass, 'testMethod', testArguments_NoError);
+    const toEqualClassBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethod', testArguments_ToEqual);
+    const toStrictEqualClassBundle = TestHelper.bundleTestClassMethod(TestClass, 'testMethod', testArguments_ToStrictEqual);
     describe('and calling runsWithoutErrorAsync', () => {
         describe('it calls the class method', () => {
             test('one time', async () => {

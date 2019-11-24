@@ -4,34 +4,19 @@ import {
     testArguments_SingleCall,
     testArguments_TripleCall,
     expectedArguments_TooManyCalls,
-    expectedArguments_WrongValues
+    expectedArguments_WrongValues,
 } from './fixtures/constants';
 import { PrimaryTestClass, SecondaryTestClass } from './fixtures/classes';
 import { TestHelper } from '../src/testHelper';
 
 describe('When using TestClassMethodUsage helper class', () => {
-    const asyncSingleCallBundle = TestHelper.BundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_SingleCall);
-    const asyncTripleCallBundle = TestHelper.BundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_TripleCall);
-    const singleCallBundle = TestHelper.BundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_SingleCall);
-    const tripleCallBundle = TestHelper.BundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_TripleCall);
-    const singleCalledBundle = TestHelper.BundleCalledClassMethod(
-        SecondaryTestClass,
-        'secondaryMethod',
-        testArguments_SingleCall[0] as number,
-        expectedArguments_SingleCall
-    );
-    const wrongValuesCalledBundle = TestHelper.BundleCalledClassMethod(
-        SecondaryTestClass,
-        'secondaryMethod',
-        testArguments_SingleCall[0] as number,
-        expectedArguments_WrongValues
-    );
-    const tooManyCalledBundle = TestHelper.BundleCalledClassMethod(
-        SecondaryTestClass,
-        'secondaryMethod',
-        testArguments_SingleCall[0] as number,
-        expectedArguments_TooManyCalls
-    );
+    const asyncSingleCallBundle = TestHelper.bundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_SingleCall);
+    const asyncTripleCallBundle = TestHelper.bundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_TripleCall);
+    const singleCallBundle = TestHelper.bundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_SingleCall);
+    const tripleCallBundle = TestHelper.bundleTestClassMethod(PrimaryTestClass, 'testMethodAsync', testArguments_TripleCall);
+    const singleCalledBundle = TestHelper.bundleCalledClassMethod(SecondaryTestClass, 'secondaryMethod', expectedArguments_SingleCall);
+    const wrongValuesCalledBundle = TestHelper.bundleCalledClassMethod(SecondaryTestClass, 'secondaryMethod', expectedArguments_WrongValues);
+    const tooManyCalledBundle = TestHelper.bundleCalledClassMethod(SecondaryTestClass, 'secondaryMethod', expectedArguments_TooManyCalls);
     describe('and calling callsClassMethodTimesAsync', () => {
         describe('it calls the test method', () => {
             test('one time', async () => {

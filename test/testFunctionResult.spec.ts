@@ -11,7 +11,7 @@ import {
     testArguments_ToEqual,
     testArguments_ToStrictEqual,
     expectedNotToStrictEqualResult,
-    expectedMustUseStrictEqualResult
+    expectedMustUseStrictEqualResult,
 } from './fixtures/constants';
 import { expectEquality } from '../src/common';
 jest.mock('./fixtures/functions', () => ({
@@ -27,7 +27,7 @@ jest.mock('./fixtures/functions', () => ({
                 return expectedToStrictEqualResult;
             }
             return;
-        }
+        },
     ),
     testFunction: jest.fn((a: number, b: string): any => {
         if (a === testArguments_WithError[0]) {
@@ -40,18 +40,18 @@ jest.mock('./fixtures/functions', () => ({
             return expectedToStrictEqualResult;
         }
         return;
-    })
+    }),
 }));
 
 describe('When using TestFunctionResult helper class', () => {
-    const asyncNoErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_NoError);
-    const asyncErrorBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_WithError);
-    const asyncToEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_ToEqual);
-    const asyncStrictEqualBundle = TestHelper.BundleTestFunction(testFunctionAsync, testArguments_ToStrictEqual);
-    const noErrorBundle = TestHelper.BundleTestFunction(testFunction, testArguments_NoError);
-    const errorBundle = TestHelper.BundleTestFunction(testFunction, testArguments_WithError);
-    const toEqualBundle = TestHelper.BundleTestFunction(testFunction, testArguments_ToEqual);
-    const strictEqualBundle = TestHelper.BundleTestFunction(testFunction, testArguments_ToStrictEqual);
+    const asyncNoErrorBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_NoError);
+    const asyncErrorBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_WithError);
+    const asyncToEqualBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_ToEqual);
+    const asyncStrictEqualBundle = TestHelper.bundleTestFunction(testFunctionAsync, testArguments_ToStrictEqual);
+    const noErrorBundle = TestHelper.bundleTestFunction(testFunction, testArguments_NoError);
+    const errorBundle = TestHelper.bundleTestFunction(testFunction, testArguments_WithError);
+    const toEqualBundle = TestHelper.bundleTestFunction(testFunction, testArguments_ToEqual);
+    const strictEqualBundle = TestHelper.bundleTestFunction(testFunction, testArguments_ToStrictEqual);
     describe('and calling runsWithoutErrorAsync', () => {
         describe('it calls the test function', () => {
             test('one time', async () => {
