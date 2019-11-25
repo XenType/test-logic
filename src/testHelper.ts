@@ -1,20 +1,20 @@
-import { CalledClassMethodBundle, CalledFunctionBundle, TestClassMethodBundle, TestFunction, TestFunctionBundle } from './common';
+import { ICalledClassMethodBundle, ICalledFunctionBundle, ITestClassMethodBundle, ITestFunctionBundle, TestFunction } from './common';
 
 export class TestHelper {
     public static convertArgumentsToArray = (...args: any[]): any[] => {
         return args;
     };
-    public static bundleTestFunction = (functionToTest: TestFunction, args: any[]): TestFunctionBundle => {
+    public static bundleTestFunction = (functionToTest: TestFunction, args: any[]): ITestFunctionBundle => {
         return { functionToTest, args };
     };
-    public static bundleTestClassMethod = (classToTest: any, methodName: string, args: any[]): TestClassMethodBundle => {
+    public static bundleTestClassMethod = (classToTest: any, methodName: string, args: any[]): ITestClassMethodBundle => {
         return { classToTest, methodName, args };
     };
-    public static bundleCalledFunction = (calledFunction: TestFunction, timesOrArguments?: number | any[][]): CalledFunctionBundle => {
+    public static bundleCalledFunction = (calledFunction: TestFunction, timesOrArguments?: number | any[][]): ICalledFunctionBundle => {
         const { times, expectedArgs } = determineTimesAndArguments(timesOrArguments);
         return { calledFunction, times, expectedArgs };
     };
-    public static bundleCalledClassMethod = (calledClass: any, methodName: string, timesOrArguments?: number | any[][]): CalledClassMethodBundle => {
+    public static bundleCalledClassMethod = (calledClass: any, methodName: string, timesOrArguments?: number | any[][]): ICalledClassMethodBundle => {
         const { times, expectedArgs } = determineTimesAndArguments(timesOrArguments);
         return { calledClass, calledMethodName: methodName, times, expectedArgs };
     };

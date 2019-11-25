@@ -1,7 +1,7 @@
-import { expectEquality, TestClassMethodBundle } from './common';
+import { expectEquality, ITestClassMethodBundle } from './common';
 
 export class TestClassMethodResult {
-    public static runsWithoutErrorAsync = async (classBundle: TestClassMethodBundle): Promise<void> => {
+    public static runsWithoutErrorAsync = async (classBundle: ITestClassMethodBundle): Promise<void> => {
         let message = '';
         try {
             await classBundle.classToTest[classBundle.methodName](...classBundle.args);
@@ -11,7 +11,7 @@ export class TestClassMethodResult {
         expectEquality(message, '');
         return;
     };
-    public static runsWithoutError = (classBundle: TestClassMethodBundle): void => {
+    public static runsWithoutError = (classBundle: ITestClassMethodBundle): void => {
         let message = '';
         try {
             classBundle.classToTest[classBundle.methodName](...classBundle.args);
@@ -21,7 +21,7 @@ export class TestClassMethodResult {
         expectEquality(message, '');
         return;
     };
-    public static throwsErrorAsync = async (classBundle: TestClassMethodBundle, expectedErrorMessage: string): Promise<void> => {
+    public static throwsErrorAsync = async (classBundle: ITestClassMethodBundle, expectedErrorMessage: string): Promise<void> => {
         let message = '';
         try {
             await classBundle.classToTest[classBundle.methodName](...classBundle.args);
@@ -31,7 +31,7 @@ export class TestClassMethodResult {
         expectEquality(message, expectedErrorMessage);
         return;
     };
-    public static throwsError = (classBundle: TestClassMethodBundle, expectedErrorMessage: string): void => {
+    public static throwsError = (classBundle: ITestClassMethodBundle, expectedErrorMessage: string): void => {
         let message = '';
         try {
             classBundle.classToTest[classBundle.methodName](...classBundle.args);
@@ -41,12 +41,16 @@ export class TestClassMethodResult {
         expectEquality(message, expectedErrorMessage);
         return;
     };
-    public static returnsExpectedAsync = async (classBundle: TestClassMethodBundle, expectedResult: any, useStrictEqual?: boolean): Promise<void> => {
+    public static returnsExpectedAsync = async (
+        classBundle: ITestClassMethodBundle,
+        expectedResult: any,
+        useStrictEqual?: boolean,
+    ): Promise<void> => {
         const result = await classBundle.classToTest[classBundle.methodName](...classBundle.args);
         expectEquality(result, expectedResult, useStrictEqual);
         return;
     };
-    public static returnsExpected = (classBundle: TestClassMethodBundle, expectedResult: any, useStrictEqual?: boolean): void => {
+    public static returnsExpected = (classBundle: ITestClassMethodBundle, expectedResult: any, useStrictEqual?: boolean): void => {
         const result = classBundle.classToTest[classBundle.methodName](...classBundle.args);
         expectEquality(result, expectedResult, useStrictEqual);
         return;

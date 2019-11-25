@@ -1,14 +1,17 @@
-import { CalledClassMethodBundle, CalledFunctionBundle, TestFunctionBundle } from './common';
+import { ICalledClassMethodBundle, ICalledFunctionBundle, ITestFunctionBundle } from './common';
 
 export class TestFunctionUsage {
-    public static callsFunctionTimesAsync = async (functionBundle: TestFunctionBundle, calledBundle: CalledFunctionBundle): Promise<void> => {
+    public static callsFunctionTimesAsync = async (functionBundle: ITestFunctionBundle, calledBundle: ICalledFunctionBundle): Promise<void> => {
         try {
             await functionBundle.functionToTest(...functionBundle.args);
         } catch {}
         expect(calledBundle.calledFunction).toHaveBeenCalledTimes(calledBundle.times || 0);
         return;
     };
-    public static callsFunctionWithArgumentsAsync = async (functionBundle: TestFunctionBundle, calledBundle: CalledFunctionBundle): Promise<void> => {
+    public static callsFunctionWithArgumentsAsync = async (
+        functionBundle: ITestFunctionBundle,
+        calledBundle: ICalledFunctionBundle,
+    ): Promise<void> => {
         try {
             await functionBundle.functionToTest(...functionBundle.args);
         } catch {}
@@ -17,14 +20,14 @@ export class TestFunctionUsage {
         }
         return;
     };
-    public static callsFunctionTimes = (functionBundle: TestFunctionBundle, calledBundle: CalledFunctionBundle): void => {
+    public static callsFunctionTimes = (functionBundle: ITestFunctionBundle, calledBundle: ICalledFunctionBundle): void => {
         try {
             functionBundle.functionToTest(...functionBundle.args);
         } catch {}
         expect(calledBundle.calledFunction).toHaveBeenCalledTimes(calledBundle.times || 0);
         return;
     };
-    public static callsFunctionWithArguments = (functionBundle: TestFunctionBundle, calledBundle: CalledFunctionBundle): void => {
+    public static callsFunctionWithArguments = (functionBundle: ITestFunctionBundle, calledBundle: ICalledFunctionBundle): void => {
         try {
             functionBundle.functionToTest(...functionBundle.args);
         } catch {}
@@ -33,7 +36,7 @@ export class TestFunctionUsage {
         }
         return;
     };
-    public static callsClassMethodTimesAsync = async (functionBundle: TestFunctionBundle, calledBundle: CalledClassMethodBundle): Promise<void> => {
+    public static callsClassMethodTimesAsync = async (functionBundle: ITestFunctionBundle, calledBundle: ICalledClassMethodBundle): Promise<void> => {
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
             await functionBundle.functionToTest(...functionBundle.args);
@@ -42,8 +45,8 @@ export class TestFunctionUsage {
         return;
     };
     public static callsClassMethodWithArgumentsAsync = async (
-        functionBundle: TestFunctionBundle,
-        calledBundle: CalledClassMethodBundle,
+        functionBundle: ITestFunctionBundle,
+        calledBundle: ICalledClassMethodBundle,
     ): Promise<void> => {
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
@@ -54,7 +57,7 @@ export class TestFunctionUsage {
         }
         return;
     };
-    public static callsClassMethodTimes = (functionBundle: TestFunctionBundle, calledBundle: CalledClassMethodBundle): void => {
+    public static callsClassMethodTimes = (functionBundle: ITestFunctionBundle, calledBundle: ICalledClassMethodBundle): void => {
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
             functionBundle.functionToTest(...functionBundle.args);
@@ -62,7 +65,7 @@ export class TestFunctionUsage {
         expect(methodSpy).toHaveBeenCalledTimes(calledBundle.times || 0);
         return;
     };
-    public static callsClassMethodWithArguments = (functionBundle: TestFunctionBundle, calledBundle: CalledClassMethodBundle): void => {
+    public static callsClassMethodWithArguments = (functionBundle: ITestFunctionBundle, calledBundle: ICalledClassMethodBundle): void => {
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
             functionBundle.functionToTest(...functionBundle.args);
