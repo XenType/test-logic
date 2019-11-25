@@ -10,23 +10,23 @@ export const expectEquality = (result: any, expectedResult: any, useStrictEqual:
 export type TestSyncFunction = (...args: any[]) => any;
 export type TestAsyncFunction = (...args: any[]) => Promise<any>;
 export type TestFunction = TestSyncFunction | TestAsyncFunction;
-export type TestFunctionBundle = {
+export interface TestFunctionBundle {
     functionToTest: TestFunction;
     args: any[];
-};
-export type TestClassMethodBundle = {
+}
+export interface TestClassMethodBundle {
     classToTest: any;
     methodName: string;
     args: any[];
-};
-export type CalledFunctionBundle = {
+}
+export interface CalledFunctionBundle {
     calledFunction: TestFunction;
     times?: number;
     expectedArgs?: any[][];
-};
-export type CalledClassMethodBundle = {
+}
+export interface CalledClassMethodBundle {
     calledClass: any;
     calledMethodName: string;
     times?: number;
     expectedArgs?: any[][];
-};
+}
