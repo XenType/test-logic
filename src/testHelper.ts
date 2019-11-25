@@ -1,4 +1,4 @@
-import { CalledClassMethodBundle, CalledFunctionBundle, TestClassMethodBundle, TestFunction, TestFunctionBundle } from './types';
+import { CalledClassMethodBundle, CalledFunctionBundle, TestClassMethodBundle, TestFunction, TestFunctionBundle } from './common';
 
 export class TestHelper {
     public static convertArgumentsToArray = (...args: any[]): any[] => {

@@ -8,6 +8,6 @@
         "removeComments": true,
         "types": ["jest"]
     },
-    "include": ["src/*.ts", "src/**/*.ts"],
+    "include": ["**/*.ts"],
     "exclude": ["node_modules", "test", "dist"]
 }

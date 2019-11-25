@@ -1,4 +1,4 @@
-import { CalledClassMethodBundle, CalledFunctionBundle, TestFunctionBundle } from './types';
+import { CalledClassMethodBundle, CalledFunctionBundle, TestFunctionBundle } from './common';
 
 export class TestFunctionUsage {
     public static callsFunctionTimesAsync = async (functionBundle: TestFunctionBundle, calledBundle: CalledFunctionBundle): Promise<void> => {

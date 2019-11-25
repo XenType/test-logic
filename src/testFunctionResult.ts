@@ -1,5 +1,4 @@
-import { expectEquality } from './common';
-import { TestFunctionBundle } from './types';
+import { expectEquality, TestFunctionBundle } from './common';
 
 export class TestFunctionResult {
     public static runsWithoutErrorAsync = async (functionBundle: TestFunctionBundle): Promise<void> => {
