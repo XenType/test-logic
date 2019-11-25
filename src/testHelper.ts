@@ -1,4 +1,11 @@
-import { ICalledClassMethodBundle, ICalledFunctionBundle, ITestClassMethodBundle, ITestFunctionBundle, TestFunction } from './common';
+import {
+    ICalledClassMethodBundle,
+    ICalledFunctionBundle,
+    ITestClassMethodBundle,
+    ITestFunctionBundle,
+    TestFunction,
+    validateTwoDimensionalArray,
+} from './common';
 
 export class TestHelper {
     public static convertArgumentsToArray = (...args: any[]): any[] => {
@@ -34,6 +41,7 @@ const determineTimesAndArguments = (timesOrArguments?: number | any[][]): ITimes
                 expectedArgs.push([]);
             }
         } else {
+            validateTwoDimensionalArray(timesOrArguments);
             expectedArgs = timesOrArguments;
             times = expectedArgs.length;
         }

@@ -1,4 +1,4 @@
-import { ICalledClassMethodBundle, ICalledFunctionBundle, ITestFunctionBundle } from './common';
+import { ICalledClassMethodBundle, ICalledFunctionBundle, ITestFunctionBundle, validateTwoDimensionalArray } from './common';
 
 export class TestFunctionUsage {
     public static callsFunctionTimesAsync = async (functionBundle: ITestFunctionBundle, calledBundle: ICalledFunctionBundle): Promise<void> => {
@@ -12,6 +12,9 @@ export class TestFunctionUsage {
         functionBundle: ITestFunctionBundle,
         calledBundle: ICalledFunctionBundle,
     ): Promise<void> => {
+        if (calledBundle.expectedArgs) {
+            validateTwoDimensionalArray(calledBundle.expectedArgs);
+        }
         try {
             await functionBundle.functionToTest(...functionBundle.args);
         } catch {}
@@ -28,6 +31,9 @@ export class TestFunctionUsage {
         return;
     };
     public static callsFunctionWithArguments = (functionBundle: ITestFunctionBundle, calledBundle: ICalledFunctionBundle): void => {
+        if (calledBundle.expectedArgs) {
+            validateTwoDimensionalArray(calledBundle.expectedArgs);
+        }
         try {
             functionBundle.functionToTest(...functionBundle.args);
         } catch {}
@@ -48,6 +54,9 @@ export class TestFunctionUsage {
         functionBundle: ITestFunctionBundle,
         calledBundle: ICalledClassMethodBundle,
     ): Promise<void> => {
+        if (calledBundle.expectedArgs) {
+            validateTwoDimensionalArray(calledBundle.expectedArgs);
+        }
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
             await functionBundle.functionToTest(...functionBundle.args);
@@ -66,6 +75,9 @@ export class TestFunctionUsage {
         return;
     };
     public static callsClassMethodWithArguments = (functionBundle: ITestFunctionBundle, calledBundle: ICalledClassMethodBundle): void => {
+        if (calledBundle.expectedArgs) {
+            validateTwoDimensionalArray(calledBundle.expectedArgs);
+        }
         const methodSpy = jest.spyOn(calledBundle.calledClass, calledBundle.calledMethodName);
         try {
             functionBundle.functionToTest(...functionBundle.args);
