@@ -15,13 +15,22 @@ Valid argument array examples:
         * one call with two arguments: [[arg1, arg2]]
         * three calls with two arguments each: [[arg1, arg2], [arg3, arg4], [arg5, arg6]]`;
 
-export const validateTwoDimensionalArray = (testArray: any | any[] | any[]): void | never => {
+export const validateTwoDimensionalArray = (testArray: any | any[] | any[][]): any[][] | never => {
     if (Array.isArray(testArray)) {
-        if (testArray.length === 0) {
-            return;
+        let nonArrayFound = false;
+        let arrayFound = false;
+        for (const item of testArray) {
+            if (Array.isArray(item)) {
+                arrayFound = true;
+            } else {
+                nonArrayFound = true;
+            }
         }
-        if (Array.isArray(testArray[0])) {
-            return;
+        if (!arrayFound) {
+            return [testArray];
+        }
+        if (!nonArrayFound) {
+            return testArray;
         }
     }
     throw new Error(TWO_DIMENSIONAL_ARRAY_ERROR);

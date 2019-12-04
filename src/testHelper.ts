@@ -41,8 +41,7 @@ const determineTimesAndArguments = (timesOrArguments?: number | any[][]): ITimes
                 expectedArgs.push([]);
             }
         } else {
-            validateTwoDimensionalArray(timesOrArguments);
-            expectedArgs = timesOrArguments;
+            expectedArgs = validateTwoDimensionalArray(timesOrArguments);
             times = expectedArgs.length;
         }
     }
